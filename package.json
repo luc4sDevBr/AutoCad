@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "chromedriver": "^117.0.3",
+    "selenium-webdriver": "^4.13.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.4"
+  }
+}
