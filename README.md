@@ -1,18 +1,18 @@
-Extensão Chrome para Extração de Conteúdo de Páginas Web e Exportação para XLSX
+Extensão Chrome para Extração de Conteúdo de Páginas Web e Exportação para XLSX.
 Este repositório contém uma extensão para Google Chrome projetada para extrair informações de uma página web específica e armazená-las em um arquivo XLSX.
 
-Funcionalidades
+Funcionalidades.
 Função getInfoAtendimento: Implementa técnicas de web scraping para extrair conteúdo de páginas web.
 Função parseExcel: Utiliza a biblioteca xlsx para manipulação de planilhas.
-Como Usar
+Como Usar.
 Para integrar esta extensão em seus projetos:
 
 Clonar o Repositório:
 
-bash
-Copy code
-git clone https://github.com/luc4sDevBr/ExtensaoPDFScan.git
-cd ExtensaoPDFScan
+bash.
+Copy code.
+git clone https://github.com/luc4sDevBr/ExtensaoPDFScan.git.
+cd ExtensaoPDFScan.
 Carregar a Extensão no Chrome:
 
 Abra o Chrome e vá para chrome://extensions/.
