@@ -17,21 +17,38 @@ document.getElementById('file-upload').addEventListener('change', async function
 });
 
 async function parseExcel(data, informacoes) {
-  const workbook = XLSX.read(data, { type: 'array' });
-  const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+  // Lendo o arquivo Excel com a formatação
+  const workbook = XLSX.read(data, { type: 'array', cellStyles: true, raw: true,bookVBA: true, cellFormula: true, cellNF: true });
+  const firstSheet = workbook.Sheets[workbook.SheetNames[2]];
 
-  // Inserindo informações na célula N1
-  XLSX.utils.sheet_add_aoa(firstSheet, [['Olá Mundo, informações:\n'+informacoes.nome+',\n'+informacoes.data+',\n'+informacoes.cpf+',\n'+informacoes.modalidade+'\n']], { origin: 'N1' });
+  
+  let rowCount = 0;
+  let rowIndex = 9; 
+  let celulaAtual;
 
-  // Gerando o arquivo Excel modificado
-  const newData = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+  while (true) {
+    const cell = firstSheet['A' + rowIndex];
+    if (!cell || !cell.v) {
+      break; 
+    }
+    rowCount++;
+    rowIndex++;
+  }
 
-  // Criando um blob e um link para download
+ 
+  XLSX.utils.sheet_add_aoa(firstSheet, [[informacoes.data]], { origin: 'A'+rowIndex });
+  XLSX.utils.sheet_add_aoa(firstSheet, [[informacoes.nome]], { origin: 'D'+rowIndex });
+  XLSX.utils.sheet_add_aoa(firstSheet, [[informacoes.cpf]], { origin: 'G'+rowIndex });
+  XLSX.utils.sheet_add_aoa(firstSheet, [[informacoes.modalidade]], { origin: 'K'+rowIndex });
+
+
+
+  const newData = XLSX.write(workbook, { bookType: 'xlsx',type: 'array', cellStyles: true, raw: true,bookVBA: true, cellFormula: true, cellNF: true });
   const blob = new Blob([newData], { type: 'application/octet-stream' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = "file.xlsx";
+  a.download = "Controle Atualizado 2024.xlsx";
   a.click();
   URL.revokeObjectURL(url);
 }
@@ -80,7 +97,7 @@ async function getInfoAtendimento(){
             if (info) {
               Object.assign(infoAtendimento, info);
               console.log("Informações do atendimento:", infoAtendimento);
-              alert("Informações capturadas. Agora faça o upload do arquivo Excel para salvar as informações.");
+              alert("Agora faça o upload do arquivo Excel para salvar as informações.");
             } else {
               console.error("Erro ao executar script na página.");
             }

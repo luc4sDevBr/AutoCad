@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "PDF URL Manipulator",
-  "version": "1.8",
+  "version": "2.2",
   "description": "Reads URLs from PDFs and manipulates the information",
   "permissions": [
       "accessibilityFeatures.modify",

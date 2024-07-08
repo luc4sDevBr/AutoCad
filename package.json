@@ -2,7 +2,8 @@
   "dependencies": {
     "chromedriver": "^126.0.4",
     "selenium-webdriver": "^4.13.0",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "xlsx-style": "^0.8.13"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.4"
