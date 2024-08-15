@@ -1,40 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Caixa Alta</title>
-      <link rel="stylesheet" href="script.css">
-      <script src="node_modules/xlsx/dist/xlsx.full.min.js"></script>
-      <script defer src="popup.js"></script>
-  </head>
-  <body>
-    <form>
-      <div class="space-y-12">
-        <div class="border-b border-gray-900/10 pb-12">
-          <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-            <div class="col-span-full">
-              <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                <div class="text-center">
-                  <div class="mt-4 flex text-sm leading-6 text-gray-600">
-                    <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-                      <span>Upload a file</span>
-                      <input id="file-upload" name="file-upload" type="file" class="sr-only" accept=".xlsx">
-                    </label>
-                    <p class="pl-1">or drag and drop</p>
-                  </div>
-                  <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" >
+    <title>Caixa Alta</title>
+
+    <script src="node_modules/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="popup.js"></script>
+
+    <link href="output.css" rel="stylesheet">
+</head>
+<body class="w-px350 bg-slate-100">
+    <center>
+        <form class="w-4/5 p-5 text-sm bg-white text-slate-600 rounded-md shadow-md">
+
+                <div class="bg-white">
+                    <div class="">
+                        <label for="textbox" class=" flex flex-col">
+                            <span class="text-sm flex text-left">Quantidade de pessoas</span>
+                            <input id="textbox" class="text-sm pl-1 pr-1 rounded-md shadow-md">
+                        </label>
+                        <span class="text-xs font-thin flex text-left">Informe a quantidade de pessoas no cadastro</span>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="mt-6 flex items-center justify-end gap-x-6">
-        <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
-        <button id="salvar" type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
-      </div>
-    </form>
-    <pre id="output"></pre>
-  </body>
+                <span class="text-sm flex text-left mt-5">Escolha o documento que receberá as informações</span>
+                <div class= "rounded-md shadow-md mt-1 bg-white">
+                    <div class="flex flex-row text-left p-1 gap-5">
+                        <label for="file-upload" class="cursor-pointer text-xs p-1 bg-cyan-600 text-slate-50  shadow-md rounded-md font-bold">
+                            <span>Carregue um documento</span>
+                            <input id="file-upload" name="file-upload" type="file" class="sr-only" accept=".xlsx">
+                        </label>
+                        <p class="text-xs font-thin flex items-center">ou arraste e solte</p>
+                    </div>
+                    
+                </div>
+                <p class=" text-xs font-thin  flex flex-row text-left pl-1">PNG, JPG, GIF de até 10MB</p>
+                <div class="mt-5 gap-5">
+                    <button type="button" class="w-20 text-xs p-1 bg-slate-100 text-slate-600  shadow-md rounded-md font-bold">Cancel</button>
+                    <button id="salvar" type="submit" class="w-20 text-xs p-1  bg-cyan-600 text-slate-50  shadow-md rounded-md font-bold">Save</button>
+                </div>
+            </form>
+            <pre id="output"></pre>
+    </center>
+    
+</body>
 </html>

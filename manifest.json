@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "PDF URL Manipulator",
-  "version": "2.2",
+  "version": "3.7",
   "description": "Reads URLs from PDFs and manipulates the information",
   "permissions": [
       "accessibilityFeatures.modify",
@@ -80,10 +80,17 @@
       "clipboardWrite",
       "fetch"
     ],
-  "background": {
-    "service_worker": "background.js"
-  },
-  "action": {
-    "default_popup": "popup.html"
-  }
+    "host_permissions": [
+      "https://www.cadastrounico.caixa.gov.br/*"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "web_accessible_resources": [{
+      "resources": ["output.css"],
+      "matches": ["<all_urls>"]
+    }]
 }

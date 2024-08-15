@@ -6,6 +6,7 @@ document.getElementById('file-upload').addEventListener('change', async function
     const data = new Uint8Array(event.target.result);
 
     try {
+      
       const informacoes = await getInfoAtendimento();
       await parseExcel(data, informacoes);
     } catch (error) {
@@ -17,6 +18,7 @@ document.getElementById('file-upload').addEventListener('change', async function
 });
 
 async function parseExcel(data, informacoes) {
+  
   // Lendo o arquivo Excel com a formatação
   const workbook = XLSX.read(data, { type: 'array', cellStyles: true, raw: true,bookVBA: true, cellFormula: true, cellNF: true });
   const firstSheet = workbook.Sheets[workbook.SheetNames[2]];
@@ -77,8 +79,12 @@ async function getInfoAtendimento(){
         if (tabInfo.url.includes("https://www.cadastrounico.caixa.gov.br/cadun/abrirAplicacao.do#")) {
           const results = await chrome.scripting.executeScript({
             target: { tabId: tabInfo.id },
-            func: () => {
+            func:  () => {
               try {
+
+                //document.window.cadunSubmitFormAction('formularioForm', 'iniciarAlterarCaracteristicaDomicilio.do?acao=iniciarAlterar');
+                console.log("tempo");
+
                 const modalidade = document.querySelectorAll('dd')[1].textContent;
                 const data = document.querySelectorAll('dd')[4].textContent;
                 const nome = document.querySelector('tbody').childNodes[1].innerText;
