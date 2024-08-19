@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "PDF URL Manipulator",
-  "version": "3.7",
-  "description": "Reads URLs from PDFs and manipulates the information",
+  "name": "AutoCad",
+  "version": "3.9",
+  "description": "Selciona a folha de controle, em seguida insere as informações do atendimento e no final salva o arquivo no local.",
   "permissions": [
       "accessibilityFeatures.modify",
       "accessibilityFeatures.read",
@@ -92,5 +92,11 @@
     "web_accessible_resources": [{
       "resources": ["output.css"],
       "matches": ["<all_urls>"]
-    }]
+    }],
+    "icons": {
+      "16": "imagens/process16.png",
+      "48": "imagens/process48.png",
+      "128": "imagens/process128.png"
+    }
+
 }
