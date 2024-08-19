@@ -11,7 +11,7 @@ Clonar o Repositório:
 
 bash.
 Copy code.
-git clone https://github.com/luc4sDevBr/ExtensaoPDFScan.git.
+git clone https://github.com/luc4sDevBr/AutoCad.git
 cd ExtensaoPDFScan.
 Carregar a Extensão no Chrome:
 
