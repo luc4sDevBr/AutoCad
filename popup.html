@@ -2,46 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caixa Alta</title>
 
     <script src="node_modules/xlsx/dist/xlsx.full.min.js"></script>
     <script src="popup.js"></script>
 
     <link href="output.css" rel="stylesheet">
+    <style>
+        /* Classe para esconder o input number */
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body class="w-px350 bg-slate-100">
     <center>
         <form class="w-4/5 p-5 text-sm bg-white text-slate-600 rounded-md shadow-md">
-
-                <div class="bg-white">
-                    <div class="">
-                        <label for="textbox" class=" flex flex-col">
-                            <span class="text-sm flex text-left">Quantidade de pessoas</span>
-                            <input id="textbox" class="text-sm pl-1 pr-1 rounded-md shadow-md">
-                        </label>
+            <div class="bg-white">
+                <div class="">
+                    <label for="textbox" class="flex flex-col" id="pessoas-label">
+                        <span class="text-sm flex text-left">Quantidade de pessoas</span>
+                        <input id="textbox" class="text-sm pl-1 pr-1 rounded-md shadow-md">
                         <span class="text-xs font-thin flex text-left">Informe a quantidade de pessoas no cadastro</span>
-                    </div>
+                    </label>
                 </div>
-                <span class="text-sm flex text-left mt-5">Escolha o documento que receberá as informações</span>
-                <div class= "rounded-md shadow-md mt-1 bg-white">
-                    <div class="flex flex-row text-left p-1 gap-5">
-                        <label for="file-upload" class="cursor-pointer text-xs p-1 bg-cyan-600 text-slate-50  shadow-md rounded-md font-bold">
-                            <span>Carregue um documento</span>
-                            <input id="file-upload" name="file-upload" type="file" class="sr-only" accept=".xlsx">
-                        </label>
-                        <p class="text-xs font-thin flex items-center">ou arraste e solte</p>
-                    </div>
-                    
+            </div>
+            <div class="bg-white">
+                <div class="mt-5 flex flex-col items-start">
+                    <span class="text-sm text-left">Transferências?</span>
+                    <label for="checkbox" class=" w-4 h-4 text-sm pl-2 pr-1 rounded-lg shadow-md">
+                        <input type="checkbox" id="checkbox" class="">
+                    </label>
+                    <label for="number" class="flex flex-col mt-3" id="number-label">
+                        <span class="text-xs font-thin flex text-left">Selecione qual planilha do documento deve ser alterada.</span>
+                        <select name="select" id="combo">
+                            <option value="0"selected>1</option>
+                            <option value="1">2</option>
+                            <option value="2">3</option>
+                            <option value="3">4</option>
+                            <option value="4">5</option>
+                          </select>
+                    </label>
                 </div>
-                <p class=" text-xs font-thin  flex flex-row text-left pl-1">PNG, JPG, GIF de até 10MB</p>
-               <!--  <div class="mt-5 gap-5">
-                    <button type="button" class="w-20 text-xs p-1 bg-slate-100 text-slate-600  shadow-md rounded-md font-bold">Cancel</button>
-                    <button id="salvar" type="submit" class="w-20 text-xs p-1  bg-cyan-600 text-slate-50  shadow-md rounded-md font-bold">Save</button>
-                </div> -->
-            </form>
-            <pre id="output"></pre>
+            </div>
+            <span class="text-sm flex text-left mt-5">Escolha o documento que receberá as informações</span>
+            <div class="rounded-md shadow-md mt-1 bg-white">
+                <div class="flex flex-row text-left p-1 gap-5">
+                    <label for="file-upload" class="cursor-pointer text-xs p-1 bg-cyan-600 text-slate-50 shadow-md rounded-md font-bold">
+                        <span>Carregue um documento</span>
+                        <input id="file-upload" name="file-upload" type="file" class="sr-only" accept=".xlsx">
+                    </label>
+                    <p class="text-xs font-thin flex items-center">ou arraste e solte</p>
+                </div>
+            </div>
+            <p class="text-xs font-thin flex flex-row text-left pl-1">PNG, JPG, GIF de até 10MB</p>
+            <!--  <div class="mt-5 gap-5">
+                <button type="button" class="w-20 text-xs p-1 bg-slate-100 text-slate-600 shadow-md rounded-md font-bold">Cancel</button>
+                <button id="salvar" type="submit" class="w-20 text-xs p-1 bg-cyan-600 text-slate-50 shadow-md rounded-md font-bold">Save</button>
+            </div> -->
+        </form>
+        <pre id="output"></pre>
     </center>
-    
+
 </body>
 </html>

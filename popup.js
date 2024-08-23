@@ -1,4 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+  // numberLabel.classList.add('hidden');
+
+  // checkbox.addEventListener('change', function() {
+  //     if (checkbox.checked) {
+  //         numberLabel.classList.remove('hidden');
+  //         pessoasLabel.classList.add('hidden');
+  //     } else {
+  //         numberLabel.classList.add('hidden');
+  //         pessoasLabel.classList.remove('hidden');
+  //     }
+  // });
+
   document.getElementById('file-upload').addEventListener('change', async function(event) {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -22,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Lendo o arquivo Excel com a formatação
     const workbook = XLSX.read(data, { type: 'array', cellStyles: true, raw: true,bookVBA: true, cellFormula: true, cellNF: true });
-    const firstSheet = workbook.Sheets[workbook.SheetNames[2]];
+    const firstSheet = workbook.Sheets[workbook.SheetNames[parseInt(informacoes.planillhaSelected)]];
   
     
     let rowCount = 0;
@@ -42,7 +55,14 @@ document.addEventListener('DOMContentLoaded', function() {
     XLSX.utils.sheet_add_aoa(firstSheet, [[informacoes.data]], { origin: 'A'+rowIndex });
     XLSX.utils.sheet_add_aoa(firstSheet, [[informacoes.nome]], { origin: 'D'+rowIndex });
     XLSX.utils.sheet_add_aoa(firstSheet, [[informacoes.cpf]], { origin: 'G'+rowIndex });
-    XLSX.utils.sheet_add_aoa(firstSheet, [[informacoes.modalidade]], { origin: 'K'+rowIndex });
+
+    if (informacoes.transeferencia == true){
+      XLSX.utils.sheet_add_aoa(firstSheet, [["TRANSFERENCIA"]], { origin: 'K'+rowIndex });
+    }else{
+      XLSX.utils.sheet_add_aoa(firstSheet, [[informacoes.modalidade]], { origin: 'K'+rowIndex });
+    }
+      ;
+  
     XLSX.utils.sheet_add_aoa(firstSheet, [[parseInt(informacoes.qtdPessoas)]], { origin: 'M'+rowIndex });
   
   
@@ -64,9 +84,15 @@ document.addEventListener('DOMContentLoaded', function() {
         data: '',
         nome: '',
         cpf: '',
-        qtdPessoas:''
+        qtdPessoas:'',
+        transeferencia: Boolean,
+        planillhaSelected: Number
       };
-      infoAtendimento.qtdPessoas = document.getElementById('textbox').value
+
+      infoAtendimento.qtdPessoas = document.getElementById('textbox').value;
+      infoAtendimento.transeferencia = document.getElementById('checkbox').checked;
+      infoAtendimento.planillhaSelected = document.getElementById('combo').value;
+
       console.log("Botão salvar clicado");
   
       const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
